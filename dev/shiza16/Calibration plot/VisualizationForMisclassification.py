@@ -10,17 +10,17 @@ def Misclasssification_visualization(y_test, y_predict, data):
 
     """
 
-    target_label = data["Class_code"].unique()
-    label = data["Class"].unique()
+    target_label = data["recommend_code"].unique()
+    label = data["recommend"].unique()
     cmatrix = pd.DataFrame(
         data=confusion_matrix(y_test, y_predict, labels=target_label),
         columns=label,
         index=label,
     )
 
- #Because we only want to print missclassification and all the diagonal 
- #values are true classified values
-   
+    # Because we only want to print missclassification and all the diagonal
+    # values are true classified values
+
     for label in cmatrix.columns:
         cmatrix.at[label, label] = 0
 
